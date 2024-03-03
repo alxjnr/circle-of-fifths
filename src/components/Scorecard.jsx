@@ -1,33 +1,25 @@
 import { useState, useContext, useEffect } from "react";
 import { majorNotes } from "../data/Notes";
+import { minorNotes } from "../data/Notes";
 import { CurrentIndexContext } from "../context/CurrentIndexContext";
+import { NotesArrContext } from "../context/NotesArrContext";
 
 export default function Scorecard({ isShowingAnswer, setIsShowingAnswer }) {
-  const [majorNotesArr, setMajorNotesArr] = useState(majorNotes);
   const [isPlaying, setIsPlaying] = useState(false);
   const { currentIndex, setCurrentIndex } = useContext(CurrentIndexContext);
+  const { notesArr, setNotesArr } = useContext(NotesArrContext);
 
   useEffect(() => {
-    setMajorNotesArr((prev) => {
-      for (let i = prev.length - 1; i > 0; i--) {
+    setNotesArr(() => {
+      const newArr = [...majorNotes, ...minorNotes];
+      for (let i = newArr.length - 1; i > 0; i--) {
         // Generate a random index from 0 to i
         let j = Math.floor(Math.random() * (i + 1));
 
         // Swap elements at indices i and j
-        [prev[i], prev[j]] = [prev[j], prev[i]];
+        [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
       }
-      prev.push(
-        <button
-          className="button-17"
-          onClick={() => {
-            setIsShowingAnswer(new Array(12).fill(false));
-            setCurrentIndex(0);
-          }}
-        >
-          Restart
-        </button>
-      );
-      return prev;
+      return newArr;
     });
   }, []);
 
@@ -44,7 +36,7 @@ export default function Scorecard({ isShowingAnswer, setIsShowingAnswer }) {
         </button>
       ) : (
         <div>
-          <h1>{majorNotesArr[currentIndex]}</h1>
+          <h1>{notesArr[currentIndex]}</h1>
         </div>
       )}
     </div>

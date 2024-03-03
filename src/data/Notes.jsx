@@ -12,3 +12,18 @@ export const majorNotes = [
   "Bb",
   "F",
 ];
+
+export const minorNotes = [
+  "Am",
+  "F#m",
+  "Ebm",
+  "Cm",
+  "Em",
+  "G#m",
+  "Dm",
+  "Bbm",
+  "Bm",
+  "C#m",
+  "Gm",
+  "Fm",
+];
