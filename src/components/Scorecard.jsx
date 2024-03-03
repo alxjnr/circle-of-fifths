@@ -3,11 +3,14 @@ import { majorNotes } from "../data/Notes";
 import { minorNotes } from "../data/Notes";
 import { CurrentIndexContext } from "../context/CurrentIndexContext";
 import { NotesArrContext } from "../context/NotesArrContext";
+import useSound from "use-sound";
+import roundFinishedSfx from "../sounds/round-finished.mp3";
 
 export default function Scorecard({ isShowingAnswer, setIsShowingAnswer }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const { currentIndex, setCurrentIndex } = useContext(CurrentIndexContext);
   const { notesArr, setNotesArr } = useContext(NotesArrContext);
+  const [playRoundFinishedSfx] = useSound(roundFinishedSfx);
 
   useEffect(() => {
     setNotesArr(() => {
@@ -43,6 +46,7 @@ export default function Scorecard({ isShowingAnswer, setIsShowingAnswer }) {
                 resetCircle(setNotesArr, setCurrentIndex, setIsShowingAnswer);
               }}
             >
+              {playRoundFinishedSfx()}
               Restart
             </button>
           ) : (
