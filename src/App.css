@@ -29,7 +29,21 @@
   height: 75px;
   border-radius: 50%;
   border: solid rgb(128, 128, 128) 0.1rem;
-  transition: all 0.2s ease-in-out;
+  transition: background-color 0.5s ease-in-out;
+}
+
+.guess-zones-correct {
+  background-color: rgb(60, 175, 60);
+  animation: fadeBack 1s ease forwards;
+}
+
+@keyframes fadeBack {
+  from {
+    background-color: rgb(60, 175, 60);
+  }
+  to {
+    background-color: white;
+  }
 }
 
 .guess-zones:hover {

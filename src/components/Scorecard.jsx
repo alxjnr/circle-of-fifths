@@ -36,6 +36,18 @@ export default function Scorecard({ isShowingAnswer, setIsShowingAnswer }) {
         </button>
       ) : (
         <div>
+          {currentIndex > notesArr.length - 1 ? (
+            <button
+              className="button-17"
+              onClick={() => {
+                resetCircle(setNotesArr, setCurrentIndex, setIsShowingAnswer);
+              }}
+            >
+              Restart
+            </button>
+          ) : (
+            <></>
+          )}
           <h1>{notesArr[currentIndex]}</h1>
         </div>
       )}
@@ -43,4 +55,18 @@ export default function Scorecard({ isShowingAnswer, setIsShowingAnswer }) {
   );
 }
 
-function fisherShuffle(prev) {}
+function resetCircle(setNotesArr, setCurrentIndex, setIsShowingAnswer) {
+  setIsShowingAnswer(new Array(24).fill(false));
+  setCurrentIndex(0);
+  setNotesArr(() => {
+    const newArr = [...majorNotes, ...minorNotes];
+    for (let i = newArr.length - 1; i > 0; i--) {
+      // Generate a random index from 0 to i
+      let j = Math.floor(Math.random() * (i + 1));
+
+      // Swap elements at indices i and j
+      [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
+    }
+    return newArr;
+  });
+}
