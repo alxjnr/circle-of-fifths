@@ -1,6 +1,7 @@
 {
   "name": "circle-of-fifths",
   "version": "0.1.0",
+  "homepage": "https://alxjnr.github.io/circle-of-fifths",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",

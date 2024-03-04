@@ -16,11 +16,9 @@ function App() {
       <CurrentIndexContext.Provider
         value={{ currentIndex: currentIndex, setCurrentIndex: setCurrentIndex }}
       >
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Home />} />
-          </Routes>
-        </BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
       </CurrentIndexContext.Provider>
     </NotesArrContext.Provider>
   );
