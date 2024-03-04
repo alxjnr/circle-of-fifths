@@ -26,9 +26,8 @@ export default function Scorecard({
   return (
     <div className="scorecard">
       {!isPlaying || currentIndex > notesArr.length - 1 ? (
-        <div>
+        <div className="scorecard-button-container">
           <button
-            className="button-17"
             onClick={() => {
               allNotes(
                 setNotesArr,
@@ -40,8 +39,7 @@ export default function Scorecard({
           >
             All notes
           </button>
-          <buton
-            className="button-17"
+          <button
             onClick={() => {
               justMajors(
                 setNotesArr,
@@ -52,9 +50,8 @@ export default function Scorecard({
             }}
           >
             Majors
-          </buton>
-          <buton
-            className="button-17"
+          </button>
+          <button
             onClick={() => {
               justMinors(
                 setNotesArr,
@@ -65,7 +62,7 @@ export default function Scorecard({
             }}
           >
             Minors
-          </buton>
+          </button>
         </div>
       ) : (
         <div>

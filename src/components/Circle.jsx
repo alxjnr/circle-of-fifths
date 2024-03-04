@@ -69,7 +69,7 @@ export default function Circle() {
                 ? "guess-zones guess-zones-incorrect"
                 : "guess-zones"
             }
-            style={{ top: e.top, left: e.left, width: "50px", height: "50px" }}
+            style={{ top: e.top, left: e.left, width: "8%", height: "8%" }}
             onClick={() => {
               checkAnswer(
                 currentIndex,
