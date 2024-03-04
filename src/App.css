@@ -37,6 +37,10 @@
   animation: fadeBack 1s ease forwards;
 }
 
+.guess-zones-incorrect {
+  background-color: rgb(225, 158, 158);
+}
+
 @keyframes fadeBack {
   from {
     background-color: rgb(60, 175, 60);
@@ -55,13 +59,12 @@
   position: absolute;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   left: 13.5rem;
   top: 13rem;
   width: 10rem;
   height: 10rem;
-  /* border: solid black 2px; */
 }
 
 .button-17 {

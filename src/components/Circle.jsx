@@ -7,16 +7,19 @@ import { minorNotes } from "../data/Notes";
 import { majorCircles } from "../data/Circles";
 import { minorCircles } from "../data/Circles";
 import useSound from "use-sound";
-import bloopEdited from "../sounds/bloop-edited.mp3";
+import bloopRight from "../sounds/bloop-right.mp3";
+import bloopWrong from "../sounds/bloop-wrong.mp3";
 
 export default function Circle() {
   const { currentIndex, setCurrentIndex } = useContext(CurrentIndexContext);
   const { notesArr, setNotesArr } = useContext(NotesArrContext);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [isShowingAnswer, setIsShowingAnswer] = useState(
     new Array(24).fill(false)
   );
 
-  const [playClick] = useSound(bloopEdited);
+  const [playBloopRight] = useSound(bloopRight);
+  const [playBloopWrong] = useSound(bloopWrong);
 
   useEffect(() => {}, [isShowingAnswer]);
 
@@ -25,6 +28,8 @@ export default function Circle() {
       <Scorecard
         isShowingAnswer={isShowingAnswer}
         setIsShowingAnswer={setIsShowingAnswer}
+        isPlaying={isPlaying}
+        setIsPlaying={setIsPlaying}
       />
       {majorCircles.map((e) => {
         return (
@@ -32,22 +37,25 @@ export default function Circle() {
             className={
               isShowingAnswer[e.index]
                 ? "guess-zones-correct guess-zones"
+                : !isPlaying
+                ? "guess-zones guess-zones-incorrect"
                 : "guess-zones"
             }
             style={{ top: e.top, left: e.left }}
             onClick={() => {
-              playClick();
               checkAnswer(
                 currentIndex,
                 setCurrentIndex,
                 notesArr,
                 setIsShowingAnswer,
                 e.index,
-                e.note
+                e.note,
+                playBloopRight,
+                playBloopWrong
               );
             }}
           >
-            {isShowingAnswer[e.index] ? <h2>{e.note}</h2> : <></>}
+            {isShowingAnswer[e.index] || !isPlaying ? <h2>{e.note}</h2> : <></>}
           </div>
         );
       })}
@@ -57,22 +65,25 @@ export default function Circle() {
             className={
               isShowingAnswer[e.index]
                 ? "guess-zones-correct guess-zones"
+                : !isPlaying
+                ? "guess-zones guess-zones-incorrect"
                 : "guess-zones"
             }
             style={{ top: e.top, left: e.left, width: "50px", height: "50px" }}
             onClick={() => {
-              playClick();
               checkAnswer(
                 currentIndex,
                 setCurrentIndex,
                 notesArr,
                 setIsShowingAnswer,
                 e.index,
-                e.note
+                e.note,
+                playBloopRight,
+                playBloopWrong
               );
             }}
           >
-            {isShowingAnswer[e.index] ? <h4>{e.note}</h4> : <></>}
+            {isShowingAnswer[e.index] || !isPlaying ? <h4>{e.note}</h4> : <></>}
           </div>
         );
       })}
@@ -86,9 +97,12 @@ function checkAnswer(
   notesArr,
   setIsShowingAnswer,
   num,
-  note
+  note,
+  playBloopRight,
+  playBloopWrong
 ) {
   if (notesArr[currentIndex] === note) {
+    playBloopRight();
     console.log(majorNotes[currentIndex]);
     setCurrentIndex((prev) => prev + 1);
     setIsShowingAnswer((prev) => {
@@ -96,5 +110,8 @@ function checkAnswer(
       newState[num] = true;
       return newState;
     });
+  } else {
+    setCurrentIndex((prev) => prev + 1);
+    playBloopWrong();
   }
 }

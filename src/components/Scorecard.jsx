@@ -6,52 +6,69 @@ import { NotesArrContext } from "../context/NotesArrContext";
 import useSound from "use-sound";
 import roundFinishedSfx from "../sounds/round-finished.mp3";
 
-export default function Scorecard({ isShowingAnswer, setIsShowingAnswer }) {
-  const [isPlaying, setIsPlaying] = useState(false);
+export default function Scorecard({
+  isShowingAnswer,
+  setIsShowingAnswer,
+  isPlaying,
+  setIsPlaying,
+}) {
   const { currentIndex, setCurrentIndex } = useContext(CurrentIndexContext);
   const { notesArr, setNotesArr } = useContext(NotesArrContext);
   const [playRoundFinishedSfx] = useSound(roundFinishedSfx);
 
   useEffect(() => {
-    setNotesArr(() => {
-      const newArr = [...majorNotes, ...minorNotes];
-      for (let i = newArr.length - 1; i > 0; i--) {
-        // Generate a random index from 0 to i
-        let j = Math.floor(Math.random() * (i + 1));
-
-        // Swap elements at indices i and j
-        [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
-      }
-      return newArr;
-    });
-  }, []);
+    if (!isPlaying || currentIndex > notesArr.length - 1) {
+      setIsPlaying(false);
+      playRoundFinishedSfx();
+    }
+  }, [isPlaying, currentIndex, notesArr.length, playRoundFinishedSfx]);
 
   return (
     <div className="scorecard">
-      {!isPlaying ? (
-        <button
-          className="button-17"
-          onClick={() => {
-            setIsPlaying(true);
-          }}
-        >
-          Begin
-        </button>
+      {!isPlaying || currentIndex > notesArr.length - 1 ? (
+        <div>
+          <button
+            className="button-17"
+            onClick={() => {
+              allNotes(
+                setNotesArr,
+                setCurrentIndex,
+                setIsShowingAnswer,
+                setIsPlaying
+              );
+            }}
+          >
+            All notes
+          </button>
+          <buton
+            className="button-17"
+            onClick={() => {
+              justMajors(
+                setNotesArr,
+                setCurrentIndex,
+                setIsShowingAnswer,
+                setIsPlaying
+              );
+            }}
+          >
+            Majors
+          </buton>
+          <buton
+            className="button-17"
+            onClick={() => {
+              justMinors(
+                setNotesArr,
+                setCurrentIndex,
+                setIsShowingAnswer,
+                setIsPlaying
+              );
+            }}
+          >
+            Minors
+          </buton>
+        </div>
       ) : (
         <div>
-          {currentIndex > notesArr.length - 1 ? (
-            <button
-              className="button-17"
-              onClick={() => {
-                resetCircle(setNotesArr, setCurrentIndex, setIsShowingAnswer);
-              }}
-            >
-              {playRoundFinishedSfx()}
-              Restart
-            </button>
-          ) : (
-            <></>
-          )}
           <h1>{notesArr[currentIndex]}</h1>
         </div>
       )}
@@ -59,7 +76,12 @@ export default function Scorecard({ isShowingAnswer, setIsShowingAnswer }) {
   );
 }
 
-function resetCircle(setNotesArr, setCurrentIndex, setIsShowingAnswer) {
+function allNotes(
+  setNotesArr,
+  setCurrentIndex,
+  setIsShowingAnswer,
+  setIsPlaying
+) {
   setIsShowingAnswer(new Array(24).fill(false));
   setCurrentIndex(0);
   setNotesArr(() => {
@@ -73,4 +95,49 @@ function resetCircle(setNotesArr, setCurrentIndex, setIsShowingAnswer) {
     }
     return newArr;
   });
+  setIsPlaying(true);
+}
+
+function justMajors(
+  setNotesArr,
+  setCurrentIndex,
+  setIsShowingAnswer,
+  setIsPlaying
+) {
+  setIsShowingAnswer(new Array(12).fill(false));
+  setCurrentIndex(0);
+  setNotesArr(() => {
+    const newArr = [...majorNotes];
+    for (let i = newArr.length - 1; i > 0; i--) {
+      // Generate a random index from 0 to i
+      let j = Math.floor(Math.random() * (i + 1));
+
+      // Swap elements at indices i and j
+      [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
+    }
+    return newArr;
+  });
+  setIsPlaying(true);
+}
+
+function justMinors(
+  setNotesArr,
+  setCurrentIndex,
+  setIsShowingAnswer,
+  setIsPlaying
+) {
+  setIsShowingAnswer(new Array(12).fill(false));
+  setCurrentIndex(0);
+  setNotesArr(() => {
+    const newArr = [...minorNotes];
+    for (let i = newArr.length - 1; i > 0; i--) {
+      // Generate a random index from 0 to i
+      let j = Math.floor(Math.random() * (i + 1));
+
+      // Swap elements at indices i and j
+      [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
+    }
+    return newArr;
+  });
+  setIsPlaying(true);
 }
