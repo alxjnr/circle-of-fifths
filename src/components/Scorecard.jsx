@@ -9,6 +9,8 @@ import roundFinishedSfx from "../sounds/round-finished.mp3";
 export default function Scorecard({
   isShowingAnswer,
   setIsShowingAnswer,
+  isCorrect,
+  setIsCorrect,
   isPlaying,
   setIsPlaying,
 }) {
@@ -33,7 +35,8 @@ export default function Scorecard({
                 setNotesArr,
                 setCurrentIndex,
                 setIsShowingAnswer,
-                setIsPlaying
+                setIsPlaying,
+                setIsCorrect
               );
             }}
           >
@@ -45,7 +48,8 @@ export default function Scorecard({
                 setNotesArr,
                 setCurrentIndex,
                 setIsShowingAnswer,
-                setIsPlaying
+                setIsPlaying,
+                setIsCorrect
               );
             }}
           >
@@ -57,7 +61,8 @@ export default function Scorecard({
                 setNotesArr,
                 setCurrentIndex,
                 setIsShowingAnswer,
-                setIsPlaying
+                setIsPlaying,
+                setIsCorrect
               );
             }}
           >
@@ -77,9 +82,11 @@ function allNotes(
   setNotesArr,
   setCurrentIndex,
   setIsShowingAnswer,
-  setIsPlaying
+  setIsPlaying,
+  setIsCorrect
 ) {
   setIsShowingAnswer(new Array(24).fill(false));
+  setIsCorrect(new Array(24).fill(false));
   setCurrentIndex(0);
   setNotesArr(() => {
     const newArr = [...majorNotes, ...minorNotes];
@@ -99,9 +106,11 @@ function justMajors(
   setNotesArr,
   setCurrentIndex,
   setIsShowingAnswer,
-  setIsPlaying
+  setIsPlaying,
+  setIsCorrect
 ) {
   setIsShowingAnswer(new Array(12).fill(false));
+  setIsCorrect(new Array(12).fill(false));
   setCurrentIndex(0);
   setNotesArr(() => {
     const newArr = [...majorNotes];
@@ -121,9 +130,11 @@ function justMinors(
   setNotesArr,
   setCurrentIndex,
   setIsShowingAnswer,
-  setIsPlaying
+  setIsPlaying,
+  setIsCorrect
 ) {
   setIsShowingAnswer(new Array(12).fill(false));
+  setIsCorrect(new Array(12).fill(false));
   setCurrentIndex(0);
   setNotesArr(() => {
     const newArr = [...minorNotes];

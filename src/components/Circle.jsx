@@ -17,6 +17,7 @@ export default function Circle() {
   const [isShowingAnswer, setIsShowingAnswer] = useState(
     new Array(24).fill(false)
   );
+  const [isCorrect, setIsCorrect] = useState(new Array(24).fill(false));
 
   const [playBloopRight] = useSound(bloopRight);
   const [playBloopWrong] = useSound(bloopWrong);
@@ -28,6 +29,8 @@ export default function Circle() {
       <Scorecard
         isShowingAnswer={isShowingAnswer}
         setIsShowingAnswer={setIsShowingAnswer}
+        isCorrect={isCorrect}
+        setIsCorrect={setIsCorrect}
         isPlaying={isPlaying}
         setIsPlaying={setIsPlaying}
       />
@@ -36,9 +39,9 @@ export default function Circle() {
           <div
             className={
               isShowingAnswer[e.index]
-                ? "guess-zones-correct guess-zones"
-                : !isPlaying
-                ? "guess-zones guess-zones-incorrect"
+                ? isCorrect[e.index]
+                  ? "guess-zones-correct guess-zones"
+                  : "guess-zones-incorrect guess-zones"
                 : "guess-zones"
             }
             style={{ top: e.top, left: e.left }}
@@ -48,6 +51,7 @@ export default function Circle() {
                 setCurrentIndex,
                 notesArr,
                 setIsShowingAnswer,
+                setIsCorrect,
                 e.index,
                 e.note,
                 playBloopRight,
@@ -64,9 +68,9 @@ export default function Circle() {
           <div
             className={
               isShowingAnswer[e.index]
-                ? "guess-zones-correct guess-zones"
-                : !isPlaying
-                ? "guess-zones guess-zones-incorrect"
+                ? isCorrect[e.index]
+                  ? "guess-zones-correct guess-zones"
+                  : "guess-zones-incorrect guess-zones"
                 : "guess-zones"
             }
             style={{ top: e.top, left: e.left, width: "8%", height: "8%" }}
@@ -76,6 +80,7 @@ export default function Circle() {
                 setCurrentIndex,
                 notesArr,
                 setIsShowingAnswer,
+                setIsCorrect,
                 e.index,
                 e.note,
                 playBloopRight,
@@ -96,6 +101,7 @@ function checkAnswer(
   setCurrentIndex,
   notesArr,
   setIsShowingAnswer,
+  setIsCorrect,
   num,
   note,
   playBloopRight,
@@ -103,15 +109,46 @@ function checkAnswer(
 ) {
   if (notesArr[currentIndex] === note) {
     playBloopRight();
-    console.log(majorNotes[currentIndex]);
-    setCurrentIndex((prev) => prev + 1);
+    setIsCorrect((prev) => {
+      const newState = [...prev];
+      newState[num] = true;
+      return newState;
+    });
     setIsShowingAnswer((prev) => {
       const newState = [...prev];
       newState[num] = true;
       return newState;
     });
   } else {
-    setCurrentIndex((prev) => prev + 1);
     playBloopWrong();
+    majorCircles.forEach((e) => {
+      if (e.note == notesArr[currentIndex]) {
+        setIsShowingAnswer((prev) => {
+          const newState = [...prev];
+          newState[e.index] = true;
+          return newState;
+        });
+        setIsCorrect((prev) => {
+          const newState = [...prev];
+          newState[e.index] = false;
+          return newState;
+        });
+      }
+    });
+    minorCircles.forEach((e) => {
+      if (e.note == notesArr[currentIndex]) {
+        setIsShowingAnswer((prev) => {
+          const newState = [...prev];
+          newState[e.index] = true;
+          return newState;
+        });
+        setIsCorrect((prev) => {
+          const newState = [...prev];
+          newState[e.index] = false;
+          return newState;
+        });
+      }
+    });
   }
+  setCurrentIndex((prev) => prev + 1);
 }
