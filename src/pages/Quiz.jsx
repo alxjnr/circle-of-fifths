@@ -8,14 +8,26 @@ export default function Quiz() {
   const [points, setPoints] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [scoreLabel, setScoreLabel] = useState("");
+  const [correctAnswerLabel, setCorrectAnswerLabel] = useState("");
+  const [buttonsDisabled, setButtonsDisabled] = useState(false);
 
   function checkAnswer(answer) {
     if (questionsArr[index].correct_answer == answer) {
       setPoints((prev) => prev + 1);
+      setCorrectAnswerLabel("Correct!");
+    } else {
+      setCorrectAnswerLabel(
+        `The correct answer was ${questionsArr[index].correct_answer}`
+      );
     }
-    setIndex((prev) => prev + 1);
-    if (index >= 14) setIsPlaying(false);
-    setScoreLabel(`You scored ${points}/15`);
+    setButtonsDisabled(true);
+    setTimeout(() => {
+      setIndex((prev) => prev + 1);
+      if (index >= 9) setIsPlaying(false);
+      setScoreLabel(`You scored ${points}/10`);
+      setCorrectAnswerLabel("");
+      setButtonsDisabled(false);
+    }, 3000);
   }
 
   function beginQuiz() {
@@ -55,14 +67,23 @@ export default function Quiz() {
           {isPlaying ? (
             <div>
               <div className="quiz-question-wrapper">
+                <h4>Question {index + 1}</h4>
                 <h2>{questionsArr[index].question}</h2>
               </div>
               <div className="quiz-answer-container">
                 {questionsArr[index].answers.map((e) => {
-                  return <button onClick={() => checkAnswer(e)}>{e}</button>;
+                  return (
+                    <button
+                      onClick={() => checkAnswer(e)}
+                      disabled={buttonsDisabled}
+                    >
+                      {e}
+                    </button>
+                  );
                 })}
               </div>
-              <h4>{points}/15</h4>
+              <h3>{correctAnswerLabel}</h3>
+              <h4>Score: {points}/10</h4>
             </div>
           ) : (
             <div>
