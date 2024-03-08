@@ -171,18 +171,18 @@ export const questions = [
   },
   {
     question: "iii of B",
-    answers: ["D#m", "E", "F#"],
+    answers: ["D#m", "E", "Gb"],
     correct_answer: "D#m",
   },
   {
     question: "IV of B",
-    answers: ["E", "F#", "G#m"],
+    answers: ["E", "Gb", "G#m"],
     correct_answer: "E",
   },
   {
     question: "V of B",
-    answers: ["F#", "G#m", "A#dim"],
-    correct_answer: "F#",
+    answers: ["Gb", "G#m", "A#dim"],
+    correct_answer: "Gb",
   },
   {
     question: "vi of B",
