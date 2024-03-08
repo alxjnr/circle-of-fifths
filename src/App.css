@@ -5,7 +5,7 @@
 .main-centered {
   text-align: center;
   width: 100vw;
-  height: 100vh;
+  height: 95vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -82,7 +82,7 @@ h4 {
   height: 100%;
 }
 
-.scorecard-button-container button {
+button {
   align-items: center;
   appearance: none;
   background-color: #e7e7e7;
@@ -194,4 +194,39 @@ h4 {
 .button-17:disabled {
   box-shadow: rgba(60, 64, 67, 0.3) 0 1px 3px 0,
     rgba(60, 64, 67, 0.15) 0 4px 8px 3px;
+}
+
+.navbar {
+  border: solid lightgray 1px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 5vh;
+  width: 100vw;
+  margin: auto;
+}
+
+.navbar h3 {
+  cursor: pointer;
+}
+
+.quiz-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: solid black 2px;
+  border-radius: 20px 20px 20px 20px;
+  width: 80vmin;
+  height: 80vmin;
+}
+
+.quiz-answer-container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  box-sizing: border-box;
+  width: 70vw;
+  padding: 5vh;
 }
