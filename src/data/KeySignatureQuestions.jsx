@@ -21,7 +21,7 @@ export const questions = [
   },
   {
     question: "Identify the flats in Gb/F#",
-    answer: ["Gb/F#", "Db/C#", "Ab", "Eb", "Bb"],
+    answer: ["Gb/F#", "Db/C#", "Ab", "Eb", "Bb", "B"],
   },
   {
     question: "Identify the flats in Db/C#",

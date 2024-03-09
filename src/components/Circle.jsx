@@ -7,8 +7,8 @@ import { minorNotes } from "../data/Notes";
 import { majorCircles } from "../data/Circles";
 import { minorCircles } from "../data/Circles";
 import useSound from "use-sound";
-import bloopRight from "../sounds/bloop-right.mp3";
-import bloopWrong from "../sounds/bloop-wrong.mp3";
+import bloopRight from "../sounds/bloop-right-sfx-002.mp3";
+import bloopWrong from "../sounds/bloop-wrong-sfx.mp3";
 
 export default function Circle() {
   const { currentIndex, setCurrentIndex } = useContext(CurrentIndexContext);

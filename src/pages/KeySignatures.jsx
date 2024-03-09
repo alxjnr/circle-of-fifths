@@ -3,6 +3,9 @@ import "../App.css";
 import Navbar from "../components/Navbar";
 import { questions } from "../data/KeySignatureQuestions";
 import { pianoKeys } from "../data/PianoKeys";
+import useSound from "use-sound";
+import bloopRight from "../sounds/bloop-right-sfx-002.mp3";
+import bloopWrong from "../sounds/bloop-wrong-sfx.mp3";
 
 export default function KeySignatures() {
   const [questionsArr, setQuestionsArr] = useState(questions);
@@ -12,6 +15,9 @@ export default function KeySignatures() {
   const [correctAnswerLabel, setCorrectAnswerLabel] = useState("");
   const [isPlaying, setIsPlaying] = useState(false);
   const [buttonDisabled, setButtonDisabled] = useState(false);
+
+  const [playBloopRight] = useSound(bloopRight, 1);
+  const [playBloopWrong] = useSound(bloopWrong, 1);
 
   function selectKey(key) {
     setPianoKeysArr((prev) => {
@@ -33,6 +39,7 @@ export default function KeySignatures() {
     if (questionAnswers.join() == userAnswers.sort().join()) {
       setCorrectAnswerLabel("Correct!");
       setPoints((prev) => prev + 1);
+      playBloopRight();
     } else {
       setCorrectAnswerLabel(
         // `Incorrect, the answer is ${questionAnswers.join(" - ")}`
@@ -54,6 +61,7 @@ export default function KeySignatures() {
         });
         return arrClone;
       });
+      playBloopWrong();
     }
 
     setTimeout(() => {
@@ -70,7 +78,7 @@ export default function KeySignatures() {
         return arrCopy;
       });
       setButtonDisabled(false);
-    }, 3000);
+    }, 2500);
     console.log(questionAnswers.join());
   }
 

@@ -23,8 +23,8 @@ export default function Quiz() {
     setButtonsDisabled(true);
     setTimeout(() => {
       setIndex((prev) => prev + 1);
-      if (index >= 9) setIsPlaying(false);
-      setScoreLabel(`You scored ${points} / 10`);
+      if (index >= 4) setIsPlaying(false);
+      setScoreLabel(`You scored ${points + 1} / 5`);
       setCorrectAnswerLabel("");
       setButtonsDisabled(false);
     }, 3000);
@@ -83,7 +83,7 @@ export default function Quiz() {
                 })}
               </div>
               <h3>{correctAnswerLabel}</h3>
-              <h4>Score: {points} / 10</h4>
+              <h4>Score: {points} / 5</h4>
             </div>
           ) : (
             <div>
