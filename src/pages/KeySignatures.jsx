@@ -35,9 +35,27 @@ export default function KeySignatures() {
       setPoints((prev) => prev + 1);
     } else {
       setCorrectAnswerLabel(
-        `Incorrect, the answer is ${questionAnswers.join(" - ")}`
+        // `Incorrect, the answer is ${questionAnswers.join(" - ")}`
+        "Incorrect!"
       );
+      setPianoKeysArr((prev) => {
+        const arrCopy = [...prev];
+        arrCopy.forEach((e) => {
+          if (e.key_selected) e.key_selected = false;
+        });
+        return arrCopy;
+      });
+      setPianoKeysArr((prev) => {
+        const arrClone = [...prev];
+        arrClone.forEach((key) => {
+          questionAnswers.forEach((answer) => {
+            if (key.key_name == answer) key.key_selected = true;
+          });
+        });
+        return arrClone;
+      });
     }
+
     setTimeout(() => {
       if (index >= 4) {
         setIsPlaying(false);
