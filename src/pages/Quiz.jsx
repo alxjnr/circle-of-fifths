@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Navbar from "../components/Navbar";
-import { questions } from "../data/Questions";
+import { questions } from "../data/QuizQuestions";
 
 export default function Quiz() {
   const [questionsArr, setQuestionsArr] = useState(questions);
@@ -24,7 +24,7 @@ export default function Quiz() {
     setTimeout(() => {
       setIndex((prev) => prev + 1);
       if (index >= 9) setIsPlaying(false);
-      setScoreLabel(`You scored ${points}/10`);
+      setScoreLabel(`You scored ${points} / 10`);
       setCorrectAnswerLabel("");
       setButtonsDisabled(false);
     }, 3000);
@@ -83,7 +83,7 @@ export default function Quiz() {
                 })}
               </div>
               <h3>{correctAnswerLabel}</h3>
-              <h4>Score: {points}/10</h4>
+              <h4>Score: {points} / 10</h4>
             </div>
           ) : (
             <div>

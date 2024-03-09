@@ -138,8 +138,6 @@ button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: solid gray 2px;
-  border-radius: 20px 20px 20px 20px;
   margin: auto;
   text-align: center;
   width: 80%;
@@ -201,4 +199,67 @@ button {
   width: auto;
   will-change: transform, opacity;
   z-index: 0;
+}
+
+.key-signatures-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+  height: 80vh;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.piano-container {
+  position: relative;
+  margin-top: 5%;
+  margin-left: 2%;
+  width: 50vmin;
+  height: 15vmin;
+  margin-bottom: 5%;
+}
+
+.piano-white-key {
+  position: absolute;
+  border: solid black 2px;
+  background-color: white;
+  width: 6.25vmin;
+  height: 15vmin;
+  cursor: pointer;
+}
+
+.piano-black-key {
+  position: absolute;
+  border: solid black 2px;
+  width: 3.13vmin;
+  background-color: black;
+  height: 8vmin;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .key-signatures-container {
+    width: 100vw;
+  }
+
+  .piano-container {
+    width: 100vmin;
+    height: 30vmin;
+    margin-left: 10%;
+  }
+
+  .piano-white-key {
+    width: 12.5vmin;
+    height: 30vmin;
+  }
+
+  .piano-black-key {
+    width: 6.25vmin;
+    height: 16vmin;
+  }
+}
+
+.piano-key-selected {
+  background-color: coral;
 }

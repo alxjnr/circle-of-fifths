@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import Home from "./pages/Home";
 import Quiz from "./pages/Quiz";
+import KeySignatures from "./pages/KeySignatures";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CurrentIndexContext } from "./context/CurrentIndexContext";
 import { NotesArrContext } from "./context/NotesArrContext";
@@ -20,6 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/quiz" element={<Quiz />} />
+          <Route path="/key-signatures" element={<KeySignatures />} />
         </Routes>
       </CurrentIndexContext.Provider>
     </NotesArrContext.Provider>
