@@ -1,22 +1,21 @@
 {
   "files": {
-    "main.css": "/circle-of-fifths/static/css/main.4fb6d6cd.css",
-    "main.js": "/circle-of-fifths/static/js/main.a7162a74.js",
+    "main.css": "/circle-of-fifths/static/css/main.02a4b3ea.css",
+    "main.js": "/circle-of-fifths/static/js/main.69085766.js",
     "static/js/453.7afb5bb8.chunk.js": "/circle-of-fifths/static/js/453.7afb5bb8.chunk.js",
     "static/js/885.706814d9.chunk.js": "/circle-of-fifths/static/js/885.706814d9.chunk.js",
     "service-worker.js": "/circle-of-fifths/service-worker.js",
     "static/media/round-finished.mp3": "/circle-of-fifths/static/media/round-finished.be174fef76dc79112c5f.mp3",
     "static/media/bloop-wrong.mp3": "/circle-of-fifths/static/media/bloop-wrong.bf7457c51ccb682c77e0.mp3",
     "static/media/bloop-right.mp3": "/circle-of-fifths/static/media/bloop-right.7b3872f5060fb0ff29ad.mp3",
-    "static/media/logo.svg": "/circle-of-fifths/static/media/logo.103b5fa18196d5665a7e12318285c916.svg",
     "index.html": "/circle-of-fifths/index.html",
-    "main.4fb6d6cd.css.map": "/circle-of-fifths/static/css/main.4fb6d6cd.css.map",
-    "main.a7162a74.js.map": "/circle-of-fifths/static/js/main.a7162a74.js.map",
+    "main.02a4b3ea.css.map": "/circle-of-fifths/static/css/main.02a4b3ea.css.map",
+    "main.69085766.js.map": "/circle-of-fifths/static/js/main.69085766.js.map",
     "453.7afb5bb8.chunk.js.map": "/circle-of-fifths/static/js/453.7afb5bb8.chunk.js.map",
     "885.706814d9.chunk.js.map": "/circle-of-fifths/static/js/885.706814d9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4fb6d6cd.css",
-    "static/js/main.a7162a74.js"
+    "static/css/main.02a4b3ea.css",
+    "static/js/main.69085766.js"
   ]
 }
