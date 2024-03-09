@@ -36,11 +36,11 @@ export const questions = [
     answer: ["Ab", "Eb", "Bb"],
   },
   {
-    question: "Identify the flats in Eb",
+    question: "Identify the flats in Bb",
     answer: ["Eb", "Bb"],
   },
   {
     question: "Identify the flats in F",
-    answer: ["Eb", "Bb"],
+    answer: ["Bb"],
   },
 ];
