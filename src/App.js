@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import Home from "./pages/Home";
 import Quiz from "./pages/Quiz";
+import AbsolutePitch from "./pages/AbsolutePitch";
 import KeySignatures from "./pages/KeySignatures";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CurrentIndexContext } from "./context/CurrentIndexContext";
@@ -21,6 +22,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/quiz" element={<Quiz />} />
           <Route path="/key-signatures" element={<KeySignatures />} />
+          <Route path="absolute-pitch" element={<AbsolutePitch />} />
         </Routes>
       </CurrentIndexContext.Provider>
     </NotesArrContext.Provider>

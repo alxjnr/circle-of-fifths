@@ -8,6 +8,7 @@ export default function Navbar() {
       <h3 onClick={() => navigate("/")}>Circle</h3>
       <h3 onClick={() => navigate("/quiz")}>Quiz</h3>
       <h3 onClick={() => navigate("/key-signatures")}>Key Signatures</h3>
+      <h3 onClick={() => navigate("/absolute-pitch")}>Absolute Pitch</h3>
     </div>
   );
 }
