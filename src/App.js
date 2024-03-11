@@ -7,25 +7,34 @@ import KeySignatures from "./pages/KeySignatures";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CurrentIndexContext } from "./context/CurrentIndexContext";
 import { NotesArrContext } from "./context/NotesArrContext";
+import { CurrentPageContext } from "./context/CurrentPageContext";
 
 function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [notesArr, setNotesArr] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
   return (
-    <NotesArrContext.Provider
-      value={{ notesArr: notesArr, setNotesArr: setNotesArr }}
+    <CurrentPageContext.Provider
+      value={{ currentPage: currentPage, setCurrentPage: setCurrentPage }}
     >
-      <CurrentIndexContext.Provider
-        value={{ currentIndex: currentIndex, setCurrentIndex: setCurrentIndex }}
+      <NotesArrContext.Provider
+        value={{ notesArr: notesArr, setNotesArr: setNotesArr }}
       >
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/quiz" element={<Quiz />} />
-          <Route path="/key-signatures" element={<KeySignatures />} />
-          <Route path="absolute-pitch" element={<AbsolutePitch />} />
-        </Routes>
-      </CurrentIndexContext.Provider>
-    </NotesArrContext.Provider>
+        <CurrentIndexContext.Provider
+          value={{
+            currentIndex: currentIndex,
+            setCurrentIndex: setCurrentIndex,
+          }}
+        >
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/quiz" element={<Quiz />} />
+            <Route path="/key-signatures" element={<KeySignatures />} />
+            <Route path="absolute-pitch" element={<AbsolutePitch />} />
+          </Routes>
+        </CurrentIndexContext.Provider>
+      </NotesArrContext.Provider>
+    </CurrentPageContext.Provider>
   );
 }
 
