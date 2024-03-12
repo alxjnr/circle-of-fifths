@@ -39,6 +39,12 @@ export default function Navbar() {
       >
         Absolute Pitch
       </h4>
+      <h4
+        onClick={() => navigateToPage("/intervals", 4)}
+        className={currentPage == 4 ? "selected-page" : ""}
+      >
+        Intervals
+      </h4>
     </div>
   );
 }

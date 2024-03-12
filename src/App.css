@@ -280,3 +280,32 @@ button {
 .piano-key-selected {
   background-color: coral;
 }
+
+.interval-questions-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 60vh;
+}
+
+.interval-answers-container button {
+  width: calc(20% - 10px);
+  margin: 10px;
+}
+
+.interval-answers-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 50vw;
+  height: 30vh;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .interval-answers-container {
+    width: 100vw;
+  }
+}

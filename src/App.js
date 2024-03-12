@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Quiz from "./pages/Quiz";
 import AbsolutePitch from "./pages/AbsolutePitch";
 import KeySignatures from "./pages/KeySignatures";
+import Intervals from "./pages/Intervals";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CurrentIndexContext } from "./context/CurrentIndexContext";
 import { NotesArrContext } from "./context/NotesArrContext";
@@ -30,7 +31,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/quiz" element={<Quiz />} />
             <Route path="/key-signatures" element={<KeySignatures />} />
-            <Route path="absolute-pitch" element={<AbsolutePitch />} />
+            <Route path="/absolute-pitch" element={<AbsolutePitch />} />
+            <Route path="/intervals" element={<Intervals />} />
           </Routes>
         </CurrentIndexContext.Provider>
       </NotesArrContext.Provider>
