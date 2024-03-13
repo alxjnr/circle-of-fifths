@@ -132,6 +132,7 @@ button {
   height: 5vh;
   width: 100vw;
   margin: auto;
+  z-index: 2;
 }
 
 .drop-down-nav {
