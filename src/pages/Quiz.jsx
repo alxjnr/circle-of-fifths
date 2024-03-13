@@ -24,10 +24,10 @@ export default function Quiz() {
     setTimeout(() => {
       setIndex((prev) => prev + 1);
       if (index >= 4) setIsPlaying(false);
-      setScoreLabel(`You scored ${points + 1} / 5`);
+      setScoreLabel(`You scored ${points} / 5`);
       setCorrectAnswerLabel("");
       setButtonsDisabled(false);
-    }, 3000);
+    }, 2000);
   }
 
   function beginQuiz() {
@@ -86,8 +86,13 @@ export default function Quiz() {
               <h4>Score: {points} / 5</h4>
             </div>
           ) : (
-            <div>
-              <button onClick={beginQuiz}>Start Quiz</button>
+            <div className="activity-outline-container">
+              <p>
+                This quiz will test your ability to recall chords in different
+                keys.
+              </p>
+              <p>Good luck!</p>
+              <button onClick={beginQuiz}>Begin</button>
               <h3>{scoreLabel}</h3>
             </div>
           )}

@@ -113,7 +113,19 @@ export default function AbsolutePitch() {
             <h5>Score: {points} / 5</h5>
           </div>
         ) : (
-          <button onClick={beginQuiz}>Start</button>
+          <div className="activity-outline-container">
+            <p>The pitch trainer is a tool for training absolute pitch.</p>
+            <p>
+              Absolute pitch is the ability to identify a note or key by ear.
+            </p>
+            <p>
+              {" "}
+              Unlike perfect pitch, absolute pitch can be learned, and relies on
+              the consistent practice of listening to notes with very unique
+              timbre.
+            </p>
+            <button onClick={beginQuiz}>Begin</button>
+          </div>
         )}
       </div>
     </div>

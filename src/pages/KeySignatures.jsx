@@ -131,7 +131,14 @@ export default function KeySignatures() {
             <h5>Score: {points} / 5</h5>
           </div>
         ) : (
-          <button onClick={beginQuiz}>Start</button>
+          <div className="activity-outline-container">
+            <p>
+              This quiz will test your ability to identify sharps and flats in
+              each key.
+            </p>
+            <p>Good luck!</p>
+            <button onClick={beginQuiz}>Begin</button>
+          </div>
         )}
       </div>
     </div>

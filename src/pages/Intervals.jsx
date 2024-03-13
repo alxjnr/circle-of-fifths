@@ -78,14 +78,19 @@ export default function Intervals() {
             <h3>Score: {points} / 5</h3>
           </div>
         ) : (
-          <div>
+          <div className="activity-outline-container">
+            <p>
+              The intervals quiz will test your ability to identify musical
+              intervals by ear.
+            </p>
+            <p>You will hear two notes, and must pick the correct interval.</p>
             <button
               onClick={() => {
                 generateQuestions();
                 setIsPlaying(true);
               }}
             >
-              Start
+              Begin
             </button>
             <h3>{totalPointsLabel}</h3>
           </div>
