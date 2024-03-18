@@ -1,9 +1,10 @@
 {
   "files": {
-    "main.css": "/circle-of-fifths/static/css/main.1f2cef68.css",
-    "main.js": "/circle-of-fifths/static/js/main.2386510c.js",
+    "main.css": "/circle-of-fifths/static/css/main.ef231979.css",
+    "main.js": "/circle-of-fifths/static/js/main.37bd25bb.js",
     "static/js/453.46d59a15.chunk.js": "/circle-of-fifths/static/js/453.46d59a15.chunk.js",
     "static/js/885.06203d52.chunk.js": "/circle-of-fifths/static/js/885.06203d52.chunk.js",
+    "static/media/treble-staff.png": "/circle-of-fifths/static/media/treble-staff.f3c0b65b78089fe805c8.png",
     "static/media/A.mp3": "/circle-of-fifths/static/media/A.9e36d99e221528aed9b5.mp3",
     "static/media/Ab.mp3": "/circle-of-fifths/static/media/Ab.db7634764fa623f55736.mp3",
     "static/media/B.mp3": "/circle-of-fifths/static/media/B.eca54614313cd420ea2f.mp3",
@@ -41,18 +42,19 @@
     "static/media/G4.mp3": "/circle-of-fifths/static/media/G4.ade349d1baca684c23c1.mp3",
     "static/media/Gb3.mp3": "/circle-of-fifths/static/media/Gb3.26ad16dac39dd563ca91.mp3",
     "static/media/Gb4.mp3": "/circle-of-fifths/static/media/Gb4.0288828c47d54d65d859.mp3",
+    "static/media/treble-clef-note-PNG.png": "/circle-of-fifths/static/media/treble-clef-note-PNG.0a3351932a619526286c.png",
     "service-worker.js": "/circle-of-fifths/service-worker.js",
     "static/media/round-finished.mp3": "/circle-of-fifths/static/media/round-finished.be174fef76dc79112c5f.mp3",
     "static/media/bloop-wrong-sfx.mp3": "/circle-of-fifths/static/media/bloop-wrong-sfx.6fe3df66274eb4d65bab.mp3",
     "static/media/bloop-right-sfx-002.mp3": "/circle-of-fifths/static/media/bloop-right-sfx-002.51021c2f5b5c4bbd61e3.mp3",
     "index.html": "/circle-of-fifths/index.html",
-    "main.1f2cef68.css.map": "/circle-of-fifths/static/css/main.1f2cef68.css.map",
-    "main.2386510c.js.map": "/circle-of-fifths/static/js/main.2386510c.js.map",
+    "main.ef231979.css.map": "/circle-of-fifths/static/css/main.ef231979.css.map",
+    "main.37bd25bb.js.map": "/circle-of-fifths/static/js/main.37bd25bb.js.map",
     "453.46d59a15.chunk.js.map": "/circle-of-fifths/static/js/453.46d59a15.chunk.js.map",
     "885.06203d52.chunk.js.map": "/circle-of-fifths/static/js/885.06203d52.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1f2cef68.css",
-    "static/js/main.2386510c.js"
+    "static/css/main.ef231979.css",
+    "static/js/main.37bd25bb.js"
   ]
 }
