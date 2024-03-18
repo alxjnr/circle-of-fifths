@@ -9,6 +9,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CurrentIndexContext } from "./context/CurrentIndexContext";
 import { NotesArrContext } from "./context/NotesArrContext";
 import { CurrentPageContext } from "./context/CurrentPageContext";
+import Notation from "./pages/Notation";
+import Inversions from "./pages/Inversions";
 
 function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -33,6 +35,8 @@ function App() {
             <Route path="/key-signatures" element={<KeySignatures />} />
             <Route path="/absolute-pitch" element={<AbsolutePitch />} />
             <Route path="/intervals" element={<Intervals />} />
+            <Route path="/notation" element={<Notation />} />
+            <Route path="/inversions" element={<Inversions />} />
           </Routes>
         </CurrentIndexContext.Provider>
       </NotesArrContext.Provider>

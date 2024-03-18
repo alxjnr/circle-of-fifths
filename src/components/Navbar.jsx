@@ -11,7 +11,7 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   const [springs, api] = useSpring(() => ({
-    from: { top: -500 },
+    from: { top: -700 },
   }));
 
   function navigateToPage(str, index) {
@@ -24,7 +24,7 @@ export default function Navbar() {
     if (isViewingMenu) {
       api.start({
         from: {
-          top: -500,
+          top: -700,
         },
         to: {
           top: 50,
@@ -33,7 +33,7 @@ export default function Navbar() {
     } else {
       api.start({
         from: {
-          top: -500,
+          top: -700,
         },
         to: {
           top: 50,
@@ -81,6 +81,18 @@ export default function Navbar() {
           className={currentPage == 4 ? "selected-page" : ""}
         >
           Intervals Quiz
+        </h4>
+        <h4
+          onClick={() => navigateToPage("/notation", 5)}
+          className={currentPage == 4 ? "selected-page" : ""}
+        >
+          Notation
+        </h4>
+        <h4
+          onClick={() => navigateToPage("/inversions", 6)}
+          className={currentPage == 4 ? "selected-page" : ""}
+        >
+          Inversions
         </h4>
       </animated.div>
     </div>
