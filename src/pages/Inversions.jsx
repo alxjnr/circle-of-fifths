@@ -19,20 +19,30 @@ export default function Inversions() {
   const [playBloopRight] = useSound(bloopRight, 1);
   const [playBloopWrong] = useSound(bloopWrong, 1);
 
-  function selectKey(key) {
+  useEffect(() => {
+    const shuffledQuestions = [...questionsArr];
+    for (let i = shuffledQuestions.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledQuestions[i], shuffledQuestions[j]] = [
+        shuffledQuestions[j],
+        shuffledQuestions[i],
+      ];
+    }
+    setQuestionsArr(shuffledQuestions);
+  }, []);
+
+  useEffect(() => {}, [pianoKeysArr]);
+
+  function selectKey(key1, key2, key3) {
     setPianoKeysArr((prev) => {
       const arrCopy = [...prev];
       arrCopy.forEach((e) => {
-        if (e.key_name == key) e.key_selected = !e.key_selected;
+        if (e.key_name == key1 || e.key_name == key2 || e.key_name == key3)
+          e.key_selected = !e.key_selected;
       });
       return arrCopy;
     });
-  }
-
-  function loadQuestion() {
-    selectKey(questionsArr[index].question[0]);
-    selectKey(questionsArr[index].question[1]);
-    selectKey(questionsArr[index].question[2]);
+    console.log(key1, key2, key3);
   }
 
   function checkAnswer(ans) {
@@ -59,7 +69,16 @@ export default function Inversions() {
         });
         return arrCopy;
       });
-      loadQuestion();
+      setIndex((prev) => {
+        let newIndex = prev + 1;
+        selectKey(
+          questionsArr[newIndex].question[0],
+          questionsArr[newIndex].question[1],
+          questionsArr[newIndex].question[2]
+        );
+        return prev + 1;
+      });
+
       setButtonDisabled(false);
     }, 2500);
   }
@@ -68,18 +87,12 @@ export default function Inversions() {
     setPoints(0);
     setCorrectAnswerLabel("");
     setIndex(0);
-
-    const shuffledQuestions = [...questionsArr];
-    for (let i = shuffledQuestions.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffledQuestions[i], shuffledQuestions[j]] = [
-        shuffledQuestions[j],
-        shuffledQuestions[i],
-      ];
-    }
-    setQuestionsArr(shuffledQuestions);
     setIsPlaying(true);
-    loadQuestion();
+    selectKey(
+      questionsArr[0].question[0],
+      questionsArr[0].question[1],
+      questionsArr[0].question[2]
+    );
   }
 
   return (
