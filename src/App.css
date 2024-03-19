@@ -283,6 +283,15 @@ button {
   margin-bottom: 5%;
 }
 
+.large-piano-container {
+  position: relative;
+  margin-top: 5%;
+  margin-left: 2%;
+  width: 90vmin;
+  height: 15vmin;
+  margin-bottom: 5%;
+}
+
 .piano-white-key {
   position: absolute;
   border: solid black 2px;
@@ -312,6 +321,12 @@ button {
     margin-left: 10%;
   }
 
+  .large-piano-container {
+    width: 100vmin;
+    height: 30vmin;
+    margin-left: 10%;
+  }
+
   .piano-white-key {
     width: 12.5vmin;
     height: 30vmin;
@@ -320,6 +335,16 @@ button {
   .piano-black-key {
     width: 6.25vmin;
     height: 16vmin;
+  }
+
+  .large-white {
+    width: 6.25vmin;
+    height: 15vmin;
+  }
+
+  .large-black {
+    width: 3.11vmin;
+    height: 8vmin;
   }
 }
 
