@@ -5,6 +5,8 @@ import Quiz from "./pages/Quiz";
 import AbsolutePitch from "./pages/AbsolutePitch";
 import KeySignatures from "./pages/KeySignatures";
 import Intervals from "./pages/Intervals";
+import CircleOfFifths from "./pages/CircleOfFiths";
+import Navbar from "./components/Navbar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CurrentIndexContext } from "./context/CurrentIndexContext";
 import { NotesArrContext } from "./context/NotesArrContext";
@@ -29,8 +31,10 @@ function App() {
             setCurrentIndex: setCurrentIndex,
           }}
         >
+          <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/circle-of-fifths" element={<CircleOfFifths />} />
             <Route path="/quiz" element={<Quiz />} />
             <Route path="/key-signatures" element={<KeySignatures />} />
             <Route path="/absolute-pitch" element={<AbsolutePitch />} />

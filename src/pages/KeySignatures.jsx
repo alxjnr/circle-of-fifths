@@ -101,7 +101,6 @@ export default function KeySignatures() {
 
   return (
     <div>
-      <Navbar />
       <div className="main-centered">
         {isPlaying ? (
           <div className="key-signatures-container">

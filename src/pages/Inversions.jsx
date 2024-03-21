@@ -97,7 +97,6 @@ export default function Inversions() {
 
   return (
     <div>
-      <Navbar />
       <div className="main-centered">
         {isPlaying ? (
           <div className="key-signatures-container">
@@ -134,7 +133,11 @@ export default function Inversions() {
           </div>
         ) : (
           <div className="activity-outline-container">
-            <p>Under construction.</p>
+            <p>This quiz will test your knowledge of inversions.</p>
+            <p>
+              The objective is to choose the correct chord, based on the notes
+              displayed on the piano. Good luck!
+            </p>
             <button onClick={beginQuiz}>Begin</button>
           </div>
         )}

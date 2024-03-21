@@ -83,7 +83,6 @@ export default function AbsolutePitch() {
 
   return (
     <div>
-      <Navbar />
       <div className="main-centered">
         {isPlaying ? (
           <div className="key-signatures-container">

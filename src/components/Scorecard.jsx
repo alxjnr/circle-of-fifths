@@ -13,57 +13,100 @@ export default function Scorecard({
   setIsCorrect,
   isPlaying,
   setIsPlaying,
+  points,
+  setPoints,
 }) {
   const { currentIndex, setCurrentIndex } = useContext(CurrentIndexContext);
   const { notesArr, setNotesArr } = useContext(NotesArrContext);
   const [playRoundFinishedSfx] = useSound(roundFinishedSfx);
+  const [isDisplayingPoints, setIsDisplayingPoints] = useState(false);
 
   useEffect(() => {
     if (!isPlaying || currentIndex > notesArr.length - 1) {
-      setIsPlaying(false);
+      setIsDisplayingPoints(true);
       playRoundFinishedSfx();
     }
   }, [isPlaying, currentIndex, notesArr.length, playRoundFinishedSfx]);
 
+  function allNotes() {
+    setIsShowingAnswer(new Array(24).fill(false));
+    setIsCorrect(new Array(24).fill(false));
+    setCurrentIndex(0);
+    setNotesArr(() => {
+      const newArr = [...majorNotes, ...minorNotes];
+      for (let i = newArr.length - 1; i > 0; i--) {
+        // Generate a random index from 0 to i
+        let j = Math.floor(Math.random() * (i + 1));
+
+        // Swap elements at indices i and j
+        [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
+      }
+      return newArr;
+    });
+    setIsPlaying(true);
+    setIsDisplayingPoints(false);
+    setPoints(0);
+  }
+
+  function justMajors() {
+    setIsShowingAnswer(new Array(12).fill(false));
+    setIsCorrect(new Array(12).fill(false));
+    setCurrentIndex(0);
+    setNotesArr(() => {
+      const newArr = [...majorNotes];
+      for (let i = newArr.length - 1; i > 0; i--) {
+        // Generate a random index from 0 to i
+        let j = Math.floor(Math.random() * (i + 1));
+
+        // Swap elements at indices i and j
+        [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
+      }
+      return newArr;
+    });
+    setIsPlaying(true);
+    setPoints(0);
+  }
+
+  function justMinors() {
+    setIsShowingAnswer(new Array(12).fill(false));
+    setIsCorrect(new Array(12).fill(false));
+    setCurrentIndex(0);
+    setNotesArr(() => {
+      const newArr = [...minorNotes];
+      for (let i = newArr.length - 1; i > 0; i--) {
+        // Generate a random index from 0 to i
+        let j = Math.floor(Math.random() * (i + 1));
+
+        // Swap elements at indices i and j
+        [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
+      }
+      return newArr;
+    });
+    setIsPlaying(true);
+    setPoints(0);
+  }
+
   return (
     <div className="scorecard">
-      {!isPlaying || currentIndex > notesArr.length - 1 ? (
+      {!isPlaying ? (
         <div className="scorecard-button-container">
           <button
             onClick={() => {
-              allNotes(
-                setNotesArr,
-                setCurrentIndex,
-                setIsShowingAnswer,
-                setIsPlaying,
-                setIsCorrect
-              );
+              allNotes();
             }}
           >
             All notes
           </button>
           <button
             onClick={() => {
-              justMajors(
-                setNotesArr,
-                setCurrentIndex,
-                setIsShowingAnswer,
-                setIsPlaying,
-                setIsCorrect
-              );
+              justMajors();
             }}
           >
             Majors
           </button>
           <button
             onClick={() => {
-              justMinors(
-                setNotesArr,
-                setCurrentIndex,
-                setIsShowingAnswer,
-                setIsPlaying,
-                setIsCorrect
-              );
+              justMinors();
             }}
           >
             Minors
@@ -74,78 +117,20 @@ export default function Scorecard({
           <h1>{notesArr[currentIndex]}</h1>
         </div>
       )}
+      {isDisplayingPoints ? (
+        <div>
+          {/* <p>You scored {points}/12</p>
+          <button
+            onClick={() => {
+              setIsDisplayingPoints(false);
+            }}
+          >
+            Play again
+          </button> */}
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   );
-}
-
-function allNotes(
-  setNotesArr,
-  setCurrentIndex,
-  setIsShowingAnswer,
-  setIsPlaying,
-  setIsCorrect
-) {
-  setIsShowingAnswer(new Array(24).fill(false));
-  setIsCorrect(new Array(24).fill(false));
-  setCurrentIndex(0);
-  setNotesArr(() => {
-    const newArr = [...majorNotes, ...minorNotes];
-    for (let i = newArr.length - 1; i > 0; i--) {
-      // Generate a random index from 0 to i
-      let j = Math.floor(Math.random() * (i + 1));
-
-      // Swap elements at indices i and j
-      [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
-    }
-    return newArr;
-  });
-  setIsPlaying(true);
-}
-
-function justMajors(
-  setNotesArr,
-  setCurrentIndex,
-  setIsShowingAnswer,
-  setIsPlaying,
-  setIsCorrect
-) {
-  setIsShowingAnswer(new Array(12).fill(false));
-  setIsCorrect(new Array(12).fill(false));
-  setCurrentIndex(0);
-  setNotesArr(() => {
-    const newArr = [...majorNotes];
-    for (let i = newArr.length - 1; i > 0; i--) {
-      // Generate a random index from 0 to i
-      let j = Math.floor(Math.random() * (i + 1));
-
-      // Swap elements at indices i and j
-      [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
-    }
-    return newArr;
-  });
-  setIsPlaying(true);
-}
-
-function justMinors(
-  setNotesArr,
-  setCurrentIndex,
-  setIsShowingAnswer,
-  setIsPlaying,
-  setIsCorrect
-) {
-  setIsShowingAnswer(new Array(12).fill(false));
-  setIsCorrect(new Array(12).fill(false));
-  setCurrentIndex(0);
-  setNotesArr(() => {
-    const newArr = [...minorNotes];
-    for (let i = newArr.length - 1; i > 0; i--) {
-      // Generate a random index from 0 to i
-      let j = Math.floor(Math.random() * (i + 1));
-
-      // Swap elements at indices i and j
-      [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
-    }
-    return newArr;
-  });
-  setIsPlaying(true);
 }

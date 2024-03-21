@@ -89,7 +89,6 @@ export default function Notation() {
 
   return (
     <div>
-      <Navbar />
       <div className="main-centered">
         {isPlaying ? (
           <div className="key-signatures-container">

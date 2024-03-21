@@ -56,7 +56,6 @@ export default function Intervals() {
 
   return (
     <div>
-      <Navbar />
       <div className="main-centered">
         {isPlaying && questionsArr.length > 0 ? (
           <div className="interval-questions-container">

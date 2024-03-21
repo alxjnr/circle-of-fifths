@@ -80,23 +80,128 @@ export const questions = [
     correct_answer: "Ebmin",
   },
   {
-    question: ["F4", "A4", "C3"],
+    question: ["F4", "A4", "C4"],
     answers: ["Fmaj", "Cmaj", "Amin"],
     correct_answer: "Fmaj",
   },
   {
-    question: ["F4", "A3", "C3"],
+    question: ["F4", "A3", "C4"],
     answers: ["Ebmin", "Emin", "Fmaj"],
     correct_answer: "Fmaj",
   },
   {
-    question: ["F4", "Ab4", "C3"],
+    question: ["F4", "Ab4", "C4"],
     answers: ["Emaj", "Amaj", "Fmin"],
     correct_answer: "Fmin",
   },
   {
-    question: ["F4", "Ab3", "C3"],
+    question: ["F4", "Ab3", "C4"],
     answers: ["Ebmin", "Fmin", "Gb/F#maj"],
     correct_answer: "Fmin",
+  },
+  {
+    question: ["Gb/F#4", "Bb4", "Db/C#4"],
+    answers: ["Gb/F#maj", "Bbmaj", "Gmin"],
+    correct_answer: "Gb/F#maj",
+  },
+  {
+    question: ["Gb/F#4", "Bb3", "Db/C#4"],
+    answers: ["Abmin", "Amaj", "Gb/F#maj"],
+    correct_answer: "Gb/F#maj",
+  },
+  {
+    question: ["Gb/F#4", "A4", "Db/C#4"],
+    answers: ["Cmin", "Gb/F#min", "Dbmaj"],
+    correct_answer: "Gb/F#min",
+  },
+  {
+    question: ["Gb/F#4", "A3", "Db/C#4"],
+    answers: ["Ebmin", "Gb/F#min", "Fmin"],
+    correct_answer: "Gb/F#min",
+  },
+  {
+    question: ["D4", "G4", "B4"],
+    answers: ["Cmaj", "Gmaj", "Emaj"],
+    correct_answer: "Gmaj",
+  },
+  {
+    question: ["D4", "G4", "B3"],
+    answers: ["Amaj", "Gmaj", "Dbmaj"],
+    correct_answer: "Gmaj",
+  },
+  {
+    question: ["D4", "G4", "Bb4"],
+    answers: ["Gmin", "Gb/F#min", "Amaj"],
+    correct_answer: "Gmin",
+  },
+  {
+    question: ["D4", "G4", "Bb3"],
+    answers: ["Fmin", "Cmin", "Gmin"],
+    correct_answer: "Gmin",
+  },
+  {
+    question: ["Ab3", "C4", "Eb3"],
+    answers: ["Amaj", "Abmaj", "Emaj"],
+    correct_answer: "Abmaj",
+  },
+  {
+    question: ["Ab4", "C4", "Eb4"],
+    answers: ["Abmaj", "Bbmin", "Cmin"],
+    correct_answer: "Abmaj",
+  },
+  {
+    question: ["Ab3", "B3", "Eb3"],
+    answers: ["Emin", "Abmaj", "Ebmaj"],
+    correct_answer: "Abmin",
+  },
+  {
+    question: ["A3", "Db/C#4", "E3"],
+    answers: ["Gmin", "Bmin", "Amaj"],
+    correct_answer: "Amaj",
+  },
+  {
+    question: ["A3", "Db/C#3", "E3"],
+    answers: ["Dmaj", "Amaj", "Emaj"],
+    correct_answer: "Amaj",
+  },
+  {
+    question: ["A3", "C4", "E3"],
+    answers: ["Gb/F#min", "Dmin", "Amin"],
+    correct_answer: "Amin",
+  },
+  {
+    question: ["Bb3", "D4", "F3"],
+    answers: ["Ebmaj", "Bbmaj", "Cmaj"],
+    correct_answer: "Bbmaj",
+  },
+  {
+    question: ["Bb3", "D3", "F3"],
+    answers: ["Bmaj", "Bbmaj", "Cmin"],
+    correct_answer: "Bbmaj",
+  },
+  {
+    question: ["Bb3", "Db/C#4", "F3"],
+    answers: ["Abmin", "Amaj", "Bmin"],
+    correct_answer: "Bbmin",
+  },
+  {
+    question: ["Bb3", "Db/C#3", "F3"],
+    answers: ["Bbmin", "Fmin", "Gb/F#maj"],
+    correct_answer: "Bbmin",
+  },
+  {
+    question: ["B3", "Eb4", "Gb/F#3"],
+    answers: ["Bmaj", "Bbmin", "Emin"],
+    correct_answer: "Bmaj",
+  },
+  {
+    question: ["B3", "D4", "Gb/F#3"],
+    answers: ["Cmin", "Dmaj", "Bmin"],
+    correct_answer: "Bmin",
+  },
+  {
+    question: ["B3", "D3", "Gb/F#3"],
+    answers: ["Bmin", "Dbmaj", "Fmaj"],
+    correct_answer: "Bmin",
   },
 ];

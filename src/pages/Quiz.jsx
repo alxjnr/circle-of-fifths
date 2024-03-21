@@ -61,7 +61,6 @@ export default function Quiz() {
 
   return (
     <div>
-      <Navbar />
       <div className="main-centered">
         <div className="quiz-container">
           {isPlaying ? (

@@ -17,6 +17,7 @@ export default function Navbar() {
   function navigateToPage(str, index) {
     navigate(str);
     setCurrentPage(index);
+    showMenu();
   }
 
   function showMenu() {
@@ -53,7 +54,7 @@ export default function Navbar() {
       </div>
       <animated.div className="drop-down-nav" style={{ ...springs }}>
         <h4
-          onClick={() => navigateToPage("/", 0)}
+          onClick={() => navigateToPage("/circle-of-fifths", 0)}
           className={currentPage == 0 ? "selected-page" : ""}
         >
           Circle of Fifths

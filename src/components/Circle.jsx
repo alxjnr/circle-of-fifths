@@ -18,11 +18,60 @@ export default function Circle() {
     new Array(24).fill(false)
   );
   const [isCorrect, setIsCorrect] = useState(new Array(24).fill(false));
+  const [points, setPoints] = useState(0);
 
   const [playBloopRight] = useSound(bloopRight);
   const [playBloopWrong] = useSound(bloopWrong);
 
   useEffect(() => {}, [isShowingAnswer]);
+
+  function checkAnswer(num, note) {
+    if (notesArr[currentIndex] === note) {
+      playBloopRight();
+      setIsCorrect((prev) => {
+        const newState = [...prev];
+        newState[num] = true;
+        return newState;
+      });
+      setIsShowingAnswer((prev) => {
+        const newState = [...prev];
+        newState[num] = true;
+        return newState;
+      });
+      setPoints((prev) => prev + 1);
+    } else {
+      playBloopWrong();
+      majorCircles.forEach((e) => {
+        if (e.note == notesArr[currentIndex]) {
+          setIsShowingAnswer((prev) => {
+            const newState = [...prev];
+            newState[e.index] = true;
+            return newState;
+          });
+          setIsCorrect((prev) => {
+            const newState = [...prev];
+            newState[e.index] = false;
+            return newState;
+          });
+        }
+      });
+      minorCircles.forEach((e) => {
+        if (e.note == notesArr[currentIndex]) {
+          setIsShowingAnswer((prev) => {
+            const newState = [...prev];
+            newState[e.index] = true;
+            return newState;
+          });
+          setIsCorrect((prev) => {
+            const newState = [...prev];
+            newState[e.index] = false;
+            return newState;
+          });
+        }
+      });
+    }
+    setCurrentIndex((prev) => prev + 1);
+  }
 
   return (
     <div className="circle">
@@ -33,6 +82,8 @@ export default function Circle() {
         setIsCorrect={setIsCorrect}
         isPlaying={isPlaying}
         setIsPlaying={setIsPlaying}
+        points={points}
+        setPoints={setPoints}
       />
       {majorCircles.map((e) => {
         return (
@@ -46,17 +97,7 @@ export default function Circle() {
             }
             style={{ top: e.top, left: e.left }}
             onClick={() => {
-              checkAnswer(
-                currentIndex,
-                setCurrentIndex,
-                notesArr,
-                setIsShowingAnswer,
-                setIsCorrect,
-                e.index,
-                e.note,
-                playBloopRight,
-                playBloopWrong
-              );
+              checkAnswer(e.index, e.note);
             }}
           >
             {isShowingAnswer[e.index] || !isPlaying ? <h2>{e.note}</h2> : <></>}
@@ -75,17 +116,7 @@ export default function Circle() {
             }
             style={{ top: e.top, left: e.left, width: "8%", height: "8%" }}
             onClick={() => {
-              checkAnswer(
-                currentIndex,
-                setCurrentIndex,
-                notesArr,
-                setIsShowingAnswer,
-                setIsCorrect,
-                e.index,
-                e.note,
-                playBloopRight,
-                playBloopWrong
-              );
+              checkAnswer(e.index, e.note);
             }}
           >
             {isShowingAnswer[e.index] || !isPlaying ? <h4>{e.note}</h4> : <></>}
@@ -94,61 +125,4 @@ export default function Circle() {
       })}
     </div>
   );
-}
-
-function checkAnswer(
-  currentIndex,
-  setCurrentIndex,
-  notesArr,
-  setIsShowingAnswer,
-  setIsCorrect,
-  num,
-  note,
-  playBloopRight,
-  playBloopWrong
-) {
-  if (notesArr[currentIndex] === note) {
-    playBloopRight();
-    setIsCorrect((prev) => {
-      const newState = [...prev];
-      newState[num] = true;
-      return newState;
-    });
-    setIsShowingAnswer((prev) => {
-      const newState = [...prev];
-      newState[num] = true;
-      return newState;
-    });
-  } else {
-    playBloopWrong();
-    majorCircles.forEach((e) => {
-      if (e.note == notesArr[currentIndex]) {
-        setIsShowingAnswer((prev) => {
-          const newState = [...prev];
-          newState[e.index] = true;
-          return newState;
-        });
-        setIsCorrect((prev) => {
-          const newState = [...prev];
-          newState[e.index] = false;
-          return newState;
-        });
-      }
-    });
-    minorCircles.forEach((e) => {
-      if (e.note == notesArr[currentIndex]) {
-        setIsShowingAnswer((prev) => {
-          const newState = [...prev];
-          newState[e.index] = true;
-          return newState;
-        });
-        setIsCorrect((prev) => {
-          const newState = [...prev];
-          newState[e.index] = false;
-          return newState;
-        });
-      }
-    });
-  }
-  setCurrentIndex((prev) => prev + 1);
 }
