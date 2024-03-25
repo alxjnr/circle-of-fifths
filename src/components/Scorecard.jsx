@@ -20,18 +20,34 @@ export default function Scorecard({
   const { notesArr, setNotesArr } = useContext(NotesArrContext);
   const [playRoundFinishedSfx] = useSound(roundFinishedSfx);
   const [isDisplayingPoints, setIsDisplayingPoints] = useState(false);
+  const [selectedGame, setSelectedGame] = useState(0);
 
   useEffect(() => {
-    if (!isPlaying || currentIndex > notesArr.length - 1) {
-      setIsDisplayingPoints(true);
-      playRoundFinishedSfx();
+    if (selectedGame == 1) {
+      if (currentIndex > 23) {
+        playRoundFinishedSfx();
+        setIsDisplayingPoints(true);
+      }
+    } else if (selectedGame == 2 || selectedGame == 3) {
+      if (currentIndex > 11) {
+        playRoundFinishedSfx();
+        setIsDisplayingPoints(true);
+      }
     }
   }, [isPlaying, currentIndex, notesArr.length, playRoundFinishedSfx]);
+
+  function resetActivity() {
+    setCurrentIndex(0);
+    setIsDisplayingPoints(false);
+    setIsPlaying(false);
+    setSelectedGame(0);
+  }
 
   function allNotes() {
     setIsShowingAnswer(new Array(24).fill(false));
     setIsCorrect(new Array(24).fill(false));
     setCurrentIndex(0);
+    setSelectedGame(1);
     setNotesArr(() => {
       const newArr = [...majorNotes, ...minorNotes];
       for (let i = newArr.length - 1; i > 0; i--) {
@@ -44,7 +60,6 @@ export default function Scorecard({
       return newArr;
     });
     setIsPlaying(true);
-    setIsDisplayingPoints(false);
     setPoints(0);
   }
 
@@ -52,6 +67,7 @@ export default function Scorecard({
     setIsShowingAnswer(new Array(12).fill(false));
     setIsCorrect(new Array(12).fill(false));
     setCurrentIndex(0);
+    setSelectedGame(2);
     setNotesArr(() => {
       const newArr = [...majorNotes];
       for (let i = newArr.length - 1; i > 0; i--) {
@@ -71,6 +87,7 @@ export default function Scorecard({
     setIsShowingAnswer(new Array(12).fill(false));
     setIsCorrect(new Array(12).fill(false));
     setCurrentIndex(0);
+    setSelectedGame(3);
     setNotesArr(() => {
       const newArr = [...minorNotes];
       for (let i = newArr.length - 1; i > 0; i--) {
@@ -115,21 +132,15 @@ export default function Scorecard({
       ) : (
         <div>
           <h1>{notesArr[currentIndex]}</h1>
+          {isDisplayingPoints ? (
+            <div>
+              <h4>You scored {points} points.</h4>
+              <button onClick={resetActivity}>Play again</button>
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
-      )}
-      {isDisplayingPoints ? (
-        <div>
-          {/* <p>You scored {points}/12</p>
-          <button
-            onClick={() => {
-              setIsDisplayingPoints(false);
-            }}
-          >
-            Play again
-          </button> */}
-        </div>
-      ) : (
-        <></>
       )}
     </div>
   );
