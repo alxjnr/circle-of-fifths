@@ -90,11 +90,6 @@ export const questions = [
     correct_answer: "C#dim",
   },
   {
-    question: "I of A",
-    answers: ["A", "Bm", "C#m"],
-    correct_answer: "A",
-  },
-  {
     question: "ii of A",
     answers: ["Bm", "C#m", "D"],
     correct_answer: "Bm",
@@ -123,11 +118,6 @@ export const questions = [
     question: "vii° of A",
     answers: ["G#dim", "A", "Bm"],
     correct_answer: "G#dim",
-  },
-  {
-    question: "I of E",
-    answers: ["E", "F#m", "G#m"],
-    correct_answer: "E",
   },
   {
     question: "ii of E",
@@ -160,11 +150,6 @@ export const questions = [
     correct_answer: "D#dim",
   },
   {
-    question: "I of B",
-    answers: ["B", "C#m", "D#m"],
-    correct_answer: "B",
-  },
-  {
     question: "ii of B",
     answers: ["C#m", "D#m", "E"],
     correct_answer: "C#m",
@@ -193,11 +178,6 @@ export const questions = [
     question: "vii° of B",
     answers: ["A#dim", "B", "C#m"],
     correct_answer: "A#dim",
-  },
-  {
-    question: "I of Gb",
-    answers: ["Gb", "Abm", "Bbm"],
-    correct_answer: "Gb",
   },
   {
     question: "ii of Gb",
@@ -230,11 +210,6 @@ export const questions = [
     correct_answer: "Fdim",
   },
   {
-    question: "I of Db",
-    answers: ["Db", "Ebm", "Fm"],
-    correct_answer: "Db",
-  },
-  {
     question: "ii of Db",
     answers: ["Ebm", "Fm", "Gb"],
     correct_answer: "Ebm",
@@ -263,11 +238,6 @@ export const questions = [
     question: "vii° of Db",
     answers: ["Cdim", "Db", "Ebm"],
     correct_answer: "Cdim",
-  },
-  {
-    question: "I of Ab",
-    answers: ["Ab", "Bbm", "Cm"],
-    correct_answer: "Ab",
   },
   {
     question: "ii of Ab",
@@ -300,11 +270,6 @@ export const questions = [
     correct_answer: "Gdim",
   },
   {
-    question: "I of Eb",
-    answers: ["Eb", "Fm", "Gm"],
-    correct_answer: "Eb",
-  },
-  {
     question: "ii of Eb",
     answers: ["Fm", "Gm", "Ab"],
     correct_answer: "Fm",
@@ -335,11 +300,6 @@ export const questions = [
     correct_answer: "Ddim",
   },
   {
-    question: "I of Bb",
-    answers: ["Bb", "Cm", "Dm"],
-    correct_answer: "Bb",
-  },
-  {
     question: "ii of Bb",
     answers: ["Cm", "Dm", "Eb"],
     correct_answer: "Cm",
@@ -368,11 +328,6 @@ export const questions = [
     question: "vii° of Bb",
     answers: ["Adim", "Bb", "Cm"],
     correct_answer: "Adim",
-  },
-  {
-    question: "I of F",
-    answers: ["F", "Gm", "Am"],
-    correct_answer: "F",
   },
   {
     question: "ii of F",
