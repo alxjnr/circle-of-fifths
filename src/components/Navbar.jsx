@@ -3,6 +3,8 @@ import { CurrentPageContext } from "../context/CurrentPageContext";
 import { useNavigate } from "react-router-dom";
 import navIcon from "../images/nav_icon.png";
 import homeIcon from "../images/home-icon.png";
+import circleExplorerIcon from "../images/circle-explorer-icon.png";
+
 import { useSpring, animated } from "@react-spring/web";
 
 export default function Navbar() {
@@ -61,14 +63,14 @@ export default function Navbar() {
           onClick={() => navigateToPage("/", 0, false)}
         />
         <img
-          src={homeIcon}
+          src={circleExplorerIcon}
           style={{
             position: "absolute",
             top: "1%",
             left: "90%",
             opacity: "50%",
           }}
-          onClick={() => navigateToPage("/", 0, false)}
+          onClick={() => navigateToPage("/circle-explorer", 7, false)}
         />
         <div
           onClick={showMenu}
