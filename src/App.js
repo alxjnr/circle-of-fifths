@@ -13,6 +13,7 @@ import { NotesArrContext } from "./context/NotesArrContext";
 import { CurrentPageContext } from "./context/CurrentPageContext";
 import Notation from "./pages/Notation";
 import Inversions from "./pages/Inversions";
+import CircleExplorer from "./pages/CircleExplorer";
 
 function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -41,6 +42,7 @@ function App() {
             <Route path="/intervals" element={<Intervals />} />
             <Route path="/notation" element={<Notation />} />
             <Route path="/inversions" element={<Inversions />} />
+            <Route path="/circle-explorer" element={<CircleExplorer />} />
           </Routes>
         </CurrentIndexContext.Provider>
       </NotesArrContext.Provider>

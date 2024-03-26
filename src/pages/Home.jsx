@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div>
       <div className="main-centered">
-        <div>
+        <div style={{ width: "80%" }}>
           <h4>Welcome to Harmony Hub</h4>
           <p>
             Choose an activity to begin, or begin a training session by pressing
