@@ -10,34 +10,60 @@ function Circle({
   text,
   isBordered,
   isSelected,
+  isLabeled,
   setExplorerCircles,
+  setMode,
+  labelText,
 }) {
   function selectNote() {
+    const majorDiatonics = ["I", "ii", "iii", "IV", "V", "vi"];
+    const majorSubstitutions = ["bIII", "♭VI", "iv", "♭VII"];
+    const majorParallels = ["i", "v"];
+
+    const minorDiatonics = ["i", "III", "iv", "v", "VI", "VII"];
+    const minorSubstitutions = ["IV", "V7", "bVI"];
+    const minorParallels = ["", "I", "iii", "VI"];
+    let currentMode;
     setExplorerCircles((prev) => {
       const arr = [...prev];
       arr.forEach((e) => {
         e.is_selected = false;
         e.is_bordered = false;
+        e.is_labeled = false;
+        e.label_text = "";
       });
       const noteSelected = arr.filter((e) => e.note_name == text);
+      currentMode = noteSelected[0].note_size;
       arr.forEach((e) => {
-        if (e.note_name == noteSelected[0].note_name) e.is_bordered = true;
-        noteSelected[0].diatonic_chords.forEach((i) => {
+        if (e.note_name == noteSelected[0].note_name) {
+          e.is_bordered = true;
+          setMode(e.note_size);
+        }
+        noteSelected[0].diatonic_chords.forEach((i, index) => {
           if (e.note_name == i) {
             e.is_selected = true;
             e.note_colour = "lightblue";
+            e.is_labeled = true;
+            e.label_text =
+              currentMode == 0 ? majorDiatonics[index] : minorDiatonics[index];
           }
         });
-        noteSelected[0].borrowed_chords.forEach((i) => {
+        noteSelected[0].borrowed_chords.forEach((i, index) => {
           if (e.note_name == i) {
             e.is_selected = true;
             e.note_colour = "lightgreen";
+            e.is_labeled = true;
+            if (currentMode == 0) e.label_text = majorSubstitutions[index];
+            else if (currentMode == 1) e.label_text = minorSubstitutions[index];
           }
         });
-        noteSelected[0].parallel_notes.forEach((i) => {
+        noteSelected[0].parallel_notes.forEach((i, index) => {
           if (e.note_name == i) {
             e.is_selected = true;
             e.note_colour = "yellow";
+            e.is_labeled = true;
+            if (currentMode == 0) e.label_text = majorParallels[index];
+            else if (currentMode == 1) e.label_text = minorParallels[index];
           }
         });
         if (e.note_name == noteSelected[0].dominant_chord) {
@@ -52,14 +78,20 @@ function Circle({
         if (e.note_name == noteSelected[0].relative_note) {
           e.is_selected = true;
           e.note_colour = "linear-gradient(lightblue 0 75%, deeppink 75% 100%)";
+          e.is_labeled = true;
+          if (currentMode == 0) e.label_text = majorDiatonics[5];
         }
         if (e.note_name == noteSelected[0].secondary_dominant_chord) {
           e.is_selected = true;
           e.note_colour = "forestgreen";
+          e.is_labeled = false;
         }
         if (e.note_name == noteSelected[0].leading_tone) {
           e.is_selected = true;
           e.note_colour = "linear-gradient(lightgreen 0 75%, khaki 75% 100%)";
+          e.is_labeled = true;
+          if (currentMode == 0) e.label_text = majorSubstitutions[3];
+          if (currentMode == 1) e.label_text = minorSubstitutions[2];
         }
         if (e.note_name == noteSelected[0].tritone_sub) {
           e.is_selected = true;
@@ -97,6 +129,19 @@ function Circle({
       onClick={selectNote}
     >
       <p>{text}</p>
+      {isLabeled ? (
+        <div
+          className="circle-explorer-chord-function"
+          style={{
+            top: "80%",
+            left: "23%",
+          }}
+        >
+          <p>{labelText}</p>
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   );
 }
@@ -127,6 +172,7 @@ function Legend({ colour, text }) {
 
 export default function CircleExplorer() {
   const [explorerCircles, setExplorerCircles] = useState(CircleExplorerData);
+  const [mode, setMode] = useState(0);
 
   return (
     <div>
@@ -153,22 +199,39 @@ export default function CircleExplorer() {
                     isSelected={e.is_selected}
                     isBordered={e.is_bordered}
                     setExplorerCircles={setExplorerCircles}
+                    setMode={setMode}
+                    isLabeled={e.is_labeled}
+                    labelText={e.label_text}
                   />
                 );
               })}
             </div>
           </div>
-          <div className="circle-explorer-legend">
-            <Legend colour={"lightblue"} text={"Diatonic Chords"} />
-            <Legend colour={"lightgreen"} text={"Borrowed Chords"} />
-            <Legend colour={"yellow"} text={"Parallel Major/Minor"} />
-            <Legend colour={"coral"} text={"Dominant"} />
-            <Legend colour={"darkmagenta"} text={"Subdominant"} />
-            <Legend colour={"deeppink"} text={"Relative Major/Minor"} />
-            <Legend colour={"forestgreen"} text={"Secondary Dominant"} />
-            <Legend colour={"khaki"} text={"Leading Tone"} />
-            <Legend colour={"steelblue"} text={"Tritone Substitution"} />
-          </div>
+          {mode == 0 ? (
+            <div className="circle-explorer-legend">
+              <Legend colour={"lightblue"} text={"Diatonic Chords"} />
+              <Legend colour={"lightgreen"} text={"Borrowed Chords"} />
+              <Legend colour={"yellow"} text={"Parallel Minor"} />
+              <Legend colour={"coral"} text={"Dominant"} />
+              <Legend colour={"darkmagenta"} text={"Subdominant"} />
+              <Legend colour={"deeppink"} text={"Relative Minor"} />
+              <Legend colour={"forestgreen"} text={"Secondary Dominant"} />
+              <Legend colour={"khaki"} text={"Leading Tone"} />
+              <Legend colour={"steelblue"} text={"Tritone Substitution"} />
+            </div>
+          ) : (
+            <div className="circle-explorer-legend">
+              <Legend colour={"lightblue"} text={"Diatonic Chords"} />
+              <Legend colour={"lightgreen"} text={"Borrowed Chords"} />
+              <Legend colour={"yellow"} text={"Parallel Major"} />
+              <Legend colour={"coral"} text={"Dominant"} />
+              <Legend colour={"darkmagenta"} text={"Subdominant"} />
+              <Legend colour={"deeppink"} text={"Relative Major"} />
+              <Legend colour={"forestgreen"} text={"Secondary Dominant"} />
+              <Legend colour={"khaki"} text={"Leading Tone"} />
+              <Legend colour={"steelblue"} text={"Tritone Substitution"} />
+            </div>
+          )}
         </div>
       </div>
     </div>
